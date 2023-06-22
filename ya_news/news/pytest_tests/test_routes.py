@@ -24,11 +24,11 @@ def test_pages_availability(client, name, args):
 
 
 @pytest.mark.parametrize(
-        'parametrized_client, expected_status',
-        (
-            (pytest.lazy_fixture('author_client'), HTTPStatus.OK),
-            (pytest.lazy_fixture('admin_client'), HTTPStatus.NOT_FOUND),
-        ),
+    'parametrized_client, expected_status',
+    (
+        (pytest.lazy_fixture('author_client'), HTTPStatus.OK),
+        (pytest.lazy_fixture('admin_client'), HTTPStatus.NOT_FOUND),
+    ),
 )
 @pytest.mark.parametrize(
     'name',
@@ -43,11 +43,11 @@ def test_availability_for_comment_edit_and_delete(
 
 
 @pytest.mark.parametrize(
-        'name, args',
-        (
-            ('news:edit', pytest.lazy_fixture('pk_for_args_comment')),
-            ('news:delete', pytest.lazy_fixture('pk_for_args_comment')),
-        ),
+    'name, args',
+    (
+        ('news:edit', pytest.lazy_fixture('pk_for_args_comment')),
+        ('news:delete', pytest.lazy_fixture('pk_for_args_comment')),
+    ),
 )
 def test_redirect_for_anonymous_client(client, name, args):
     login_url = reverse('users:login')
