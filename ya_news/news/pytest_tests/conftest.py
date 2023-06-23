@@ -30,12 +30,12 @@ def news():
 @pytest.fixture
 def all_news():
     today = datetime.today()
-    all_news = [
-        News.objects.create(title=f'Новость {i}',
-                            text='Просто текст.',
-                            date=today - timedelta(days=i))
-        for i in range(settings.NEWS_COUNT_ON_HOME_PAGE + 1)
-    ]
+    all_news = News.objects.bulk_create([
+        News(title=f'Новость {i}',
+             text='Просто текст.',
+             date=today - timedelta(days=i))
+        for i in range(settings.NEWS_COUNT_ON_HOME_PAGE + 1)]
+    )
     return all_news
 
 
@@ -67,11 +67,6 @@ def comments(author, news):
 @pytest.fixture
 def pk_for_args_news(news):
     return news.pk,
-
-
-@pytest.fixture
-def pk_for_args_comment(comment):
-    return comment.pk,
 
 
 @pytest.fixture
