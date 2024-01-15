@@ -1,6 +1,5 @@
-### Тестирование проектов YaNote на unittest и YaNews на pytest.
+# Тестирование проектов YaNote на unittest и YaNews на pytest.
 
-##
 ### Тесты на unittest для проекта YaNote:
 В файле test_routes.py:
 - Главная страница доступна анонимному пользователю.
